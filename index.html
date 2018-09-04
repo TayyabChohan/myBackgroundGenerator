@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>These are Aminals</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function() {
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    let offset = 0;
+    let center = {
+        x: width / 2,
+        y: height / 2
+    };
+
+    const settings = {
+        speed: 0.015,
+        points: 0.1,
+        length: 6,
+        width: 85,
+        height: 65
+    };
+
+    //Initialize the dat.GUI object and assign the variables that the user can customize
+    const gui = new dat.GUI();
+    gui.add(settings, 'speed', -0.1, 0.1);
+    gui.add(settings, 'points', 0.01, 0.5);
+    gui.add(settings, 'length', 0, 10);
+    gui.add(settings, 'width', 1, 1000);
+    gui.add(settings, 'height', 1, 1000);
+
+    /**
+     * Update function that is called as many times as possible with requestAnimationFrame
+     * Draws the points and lined on the canvas
+     * @return {void}
+     */
+    function update(){
+        context.clearRect(0, 0, width, height);
+
+        //Loop that goes around an entire circle by small increments of 0.01
+        for(let angle = offset; angle < (Math.PI * settings.length) + offset; angle += settings.points) {
+
+            //X position is the current angle, but now used a distance for drawing the line
+            let x = (angle - offset) * settings.width;
+
+            //Y position is the opposite divided by the hypotenuse, this gives you an Y position for the given angle
+            let y = Math.sin(angle) * settings.height;
+
+            //Create two small rectangles to show where the current point is at
+            context.fillStyle = "hsl("+angle * 100+", 80%, 50%)";
+            context.fillRect(x, y + center.y, 5, 5);
+            context.fillRect(x - 200, y + center.y + 50, 5, 5);
+
+            //Draw a line between the two rectangles
+            context.strokeStyle = "hsl("+angle * 100+", 80%, 80%)";
+            context.beginPath();
+            context.moveTo(x, y + center.y);
+            context.lineTo(x - 200, y + center.y + 50);
+            context.stroke();
+        }
+
+        //Increase the offset so the line animates forward/backwards
+        offset += settings.speed;
+
+        window.requestAnimationFrame(update);
+    }
+
+    //Run the update function for the first time
+    update();
+};
+	</script>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
+<h1>Animals are Too Beautifull Dear</h1> 
+<div class="Conntainer">
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+</div>
+
+<canvas id="canvas"></canvas>
+	
+<dir class="Conntainer">
+
+<img src="https://images.pexels.com/photos/1350889/pexels-photo-1350889.jpeg?cs=srgb&dl=berry-close-up-confection-1350889.jpg&fm=jpg">
+<img src="https://images.pexels.com/photos/955453/pexels-photo-955453.jpeg?cs=srgb&dl=black-coffee-blue-brewed-955453.jpg&fm=jpg">
+<img src="https://images.pexels.com/photos/1350419/pexels-photo-1350419.jpeg?cs=srgb&dl=90-s-cap-daylight-1350419.jpg&fm=jpg">
+<img src="https://images.pexels.com/photos/1129045/pexels-photo-1129045.jpeg?cs=srgb&dl=beautiful-beauty-model-cute-1129045.jpg&fm=jpg">
+<img src="https://images.pexels.com/photos/1350419/pexels-photo-1350419.jpeg?cs=srgb&dl=90-s-cap-daylight-1350419.jpg&fm=jpg">
+
+<img src="https://images.pexels.com/photos/1330803/pexels-photo-1330803.jpeg?cs=srgb&dl=beach-clouds-dusk-1330803.jpg&fm=jpg">
+</dir>
+
+<div class="alert alert-secondary" role="alert">
+  This is a secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div class="Conntainer">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://images.pexels.com/photos/1330803/pexels-photo-1330803.jpeg?cs=srgb&dl=beach-clouds-dusk-1330803.jpg&fm=jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://images.pexels.com/photos/1350889/pexels-photo-1350889.jpeg?cs=srgb&dl=berry-close-up-confection-1350889.jpg&fm=jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://images.pexels.com/photos/1350889/pexels-photo-1350889.jpeg?cs=srgb&dl=berry-close-up-confection-1350889.jpg&fm=jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+
+<div class="Conntainer">
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+</div>
+<div class="Conntainer1">
+<div class="row">
+	<div class=" col col-xm-6 col-md-6 "> <h2>tayyab</h2></div>
+	<div class=" col col-xm-3 col-md-3 "><h2>tayyab</h2></div>
+	<div class="col col-xm-3 col-md-3 "><h2>tayyab</h2 ></div>
+	<div class="col col-xm-5 col-md-3 "><h2>tayyab</h2 ></div>
+	<div class="col col-xm-2 col-md-4 "><h2>tayyab</h2 ></div>
+	<div class="col col-xm-3 col-md-3 "><h2>tayyab</h2 ></div>
+	
+
+</div>
+</div>
+
+</body>
+
+</html>

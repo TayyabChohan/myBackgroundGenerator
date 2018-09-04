@@ -1,0 +1,23 @@
+body{
+
+text-align: center;
+text-transform: uppercase;
+letter-spacing: 3px;
+color: rgba(0,0,0,.5);
+background:linear-gradient(to right, red , yellow);
+}
+h1{
+
+text-align: center;
+text-transform: uppercase;
+letter-spacing: 3px;
+color: rgba(0,0,0,.5);
+width: 3px;
+}
+h2{
+	text-align: center;
+text-transform: none;
+letter-spacing: 3px;
+color: rgba(0,0,0,.5);
+background:linear-gradient(to right, red , yellow);
+}

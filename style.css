@@ -1,0 +1,52 @@
+body{
+
+	margin: 0px; 
+	margin-top: 10px;
+}
+
+.Conntainer{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+
+
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    background-color: #000011;
+}
+
+#canvas{
+    margin:0 auto;
+    display:block;
+}
+img{
+
+	width: 244px;
+	height: 300px;
+	margin: 10px;
+	transition: all 1s;
+}
+h1{
+	text-align: center;
+	text-decoration-color: green;
+	color: red;
+	border-color: black;
+	border-bottom: 3px solid pink;
+	width: 400px;
+	border-right: 10px solid pink;
+	margin: 0px;
+	box-shadow: 5px 5px 5px  #888888;
+
+}
+img:hover {
+transform: scale(1.1);
+
+}
+.col{
+
+background-color: gray;
+border: 2px solid;
+	}

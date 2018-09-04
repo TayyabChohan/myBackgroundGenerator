@@ -1,0 +1,29 @@
+h1{
+	color: red;
+	text-align: center ;
+	border:  5px solid rgba(255,0,0,0.5);
+
+    cursor: pointer;
+}
+title{
+	color: inherit;
+	cursor: pointer;
+}
+header{
+
+	background-color:black;
+	cursor: pointer;
+
+}
+li{
+	list-style: none;
+	display: inline-block;
+}
+body{
+	background-image: url("Captuvhfjhfjhfkjre.JPG");
+	background-size: cover;
+	cursor: pointer;
+}
+p{
+	color: green;
+}
